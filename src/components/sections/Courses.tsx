@@ -1,3 +1,9 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { COURSES } from "@/lib/constants";
+
 const courseThemes: Record<string, { gradient: string; accent: string; text: string; bg: string }> = {
   state: {
     gradient: "from-[#2563EB] to-[#1D4ED8]",
