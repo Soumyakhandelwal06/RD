@@ -70,7 +70,7 @@ export default function RootLayout({
                 addressRegion: "Kerala",
                 addressCountry: "IN",
               },
-              telephone: "+91 98765 43210",
+              telephone: "+91 94627 83629",
               email: "info@ascendacademy.in",
               sameAs: [],
             }),

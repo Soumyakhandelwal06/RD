@@ -2,10 +2,10 @@
 export const BRAND = {
   name: "Ascend Academy",
   tagline: "Engineering Tomorrow's Winners",
-  phone: "+91 98765 43210",
+  phone: "+91 94627 83629",
   email: "info@ascendacademy.in",
   address: "Kochi, Kerala, India",
-  whatsapp: "919876543210",
+  whatsapp: "919462783629",
 };
 
 export const COLORS = {
