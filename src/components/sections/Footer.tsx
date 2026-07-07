@@ -97,6 +97,9 @@ export default function Footer() {
             <a href="#" className="text-white/30 text-xs font-semibold uppercase tracking-wider hover:text-white/60 transition-colors">
               Terms of Service
             </a>
+            <a href="/admin/login" className="text-white/30 text-xs font-semibold uppercase tracking-wider hover:text-emerald-light transition-colors">
+              Admin Portal
+            </a>
           </div>
         </div>
       </div>
