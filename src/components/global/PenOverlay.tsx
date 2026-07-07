@@ -292,7 +292,8 @@ export default function PenOverlay() {
 
   return (
     <div
-      className="hidden lg:block fixed inset-0 pointer-events-none z-30 select-none overflow-hidden"
+      className="hidden lg:block fixed inset-0 pointer-events-none z-[5] select-none overflow-hidden"
+      style={{ opacity: 0.55 }}
       aria-hidden="true"
     >
       <Canvas

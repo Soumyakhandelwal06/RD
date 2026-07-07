@@ -9,6 +9,12 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [submitted, setSubmitted] = useState(false);
   const [confetti, setConfetti] = useState<Array<{ id: number; x: number; color: string; delay: number }>>([]);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [studentClass, setStudentClass] = useState("");
+  const [syllabus, setSyllabus] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const launchConfetti = useCallback(() => {
     const colors = ["#047857", "#d4af37", "#e5c158", "#10B981", "#aa8212", "#ffffff"];
@@ -22,10 +28,40 @@ export default function Contact() {
     setTimeout(() => setConfetti([]), 2500);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    launchConfetti();
+    setError("");
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          studentClass,
+          syllabus,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit demo request.");
+      }
+
+      setSubmitted(true);
+      launchConfetti();
+      setName("");
+      setPhone("");
+      setStudentClass("");
+      setSyllabus("");
+    } catch (err: any) {
+      setError(err.message || "An unexpected error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -153,7 +189,7 @@ export default function Contact() {
                 <h3 className="font-clash font-bold text-2xl text-navy mb-2">
                   Thank You!
                 </h3>
-                <p className="text-navy/50 max-w-sm">
+                <p className="text-navy/55 max-w-sm">
                   We&apos;ll get back to you within 24 hours to schedule your free demo class.
                 </p>
                 <button
@@ -172,11 +208,23 @@ export default function Contact() {
                   Book a Free Demo Class
                 </h3>
 
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="bg-red-500/10 border border-red-500/20 text-red-600 rounded-2xl p-4 text-xs font-semibold"
+                  >
+                    {error}
+                  </motion.div>
+                )}
+
                 {/* Student Name */}
                 <div className="relative">
                   <input
                     type="text"
                     required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     placeholder=" "
                     className="form-input w-full bg-white/45 border border-navy/10 rounded-2xl px-5 pt-6.5 pb-2.5 text-navy font-semibold outline-none focus:bg-white focus:border-emerald-brand/40 transition-all duration-300 shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)]"
                     id="student-name"
@@ -191,6 +239,8 @@ export default function Contact() {
                   <input
                     type="tel"
                     required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     placeholder=" "
                     inputMode="tel"
                     className="form-input w-full bg-white/45 border border-navy/10 rounded-2xl px-5 pt-6.5 pb-2.5 text-navy font-semibold outline-none focus:bg-white focus:border-emerald-brand/40 transition-all duration-300 shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)]"
@@ -205,8 +255,9 @@ export default function Contact() {
                 <div className="relative">
                   <select
                     required
+                    value={studentClass}
+                    onChange={(e) => setStudentClass(e.target.value)}
                     className="form-input w-full bg-white/45 border border-navy/10 rounded-2xl px-5 pt-6.5 pb-2.5 text-navy font-semibold outline-none focus:bg-white focus:border-emerald-brand/40 transition-all duration-300 appearance-none shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)]"
-                    defaultValue=""
                     id="student-class"
                   >
                     <option value="" disabled>
@@ -233,8 +284,9 @@ export default function Contact() {
                 <div className="relative">
                   <select
                     required
+                    value={syllabus}
+                    onChange={(e) => setSyllabus(e.target.value)}
                     className="form-input w-full bg-white/45 border border-navy/10 rounded-2xl px-5 pt-6.5 pb-2.5 text-navy font-semibold outline-none focus:bg-white focus:border-emerald-brand/40 transition-all duration-300 appearance-none shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)]"
-                    defaultValue=""
                     id="syllabus"
                   >
                     <option value="" disabled>
@@ -257,9 +309,17 @@ export default function Contact() {
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="btn-sweep w-full bg-gradient-to-r from-emerald-brand to-emerald-dark text-white font-bold py-4.5 rounded-2xl text-base hover:shadow-lg hover:shadow-emerald-brand/20 transition-all duration-300 cursor-pointer shadow-premium-sm uppercase tracking-wider"
+                  disabled={loading}
+                  className="btn-sweep w-full bg-gradient-to-r from-emerald-brand to-emerald-dark text-white font-bold py-4.5 rounded-2xl text-base hover:shadow-lg hover:shadow-emerald-brand/20 transition-all duration-300 cursor-pointer shadow-premium-sm uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-2"
                 >
-                  Book Free Demo Class
+                  {loading ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Booking...
+                    </>
+                  ) : (
+                    "Book Free Demo Class"
+                  )}
                 </button>
 
                 <p className="text-center text-navy/30 text-xs font-semibold uppercase tracking-wider">
