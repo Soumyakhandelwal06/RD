@@ -1,6 +1,3 @@
-import { promises as fs } from "fs";
-import path from "path";
-
 export interface Lead {
   id: string;
   name: string;
@@ -12,80 +9,147 @@ export interface Lead {
   notes?: string;
 }
 
-const DATA_DIR = path.join(process.cwd(), "src", "data");
-const LEADS_FILE = path.join(DATA_DIR, "leads.json");
+const SUPABASE_URL = process.env.SUPABASE_URL || "";
+const SUPABASE_KEY = process.env.SUPABASE_ANON_KEY || "";
 
-// Ensure the data directory and leads file exist
-async function ensureDb() {
-  try {
-    await fs.mkdir(DATA_DIR, { recursive: true });
-  } catch (error) {
-    // Already exists or permission issue
-  }
+function getHeaders() {
+  return {
+    "Content-Type": "application/json",
+    "apikey": SUPABASE_KEY,
+    "Authorization": `Bearer ${SUPABASE_KEY}`,
+  };
+}
 
-  try {
-    await fs.access(LEADS_FILE);
-  } catch {
-    // File doesn't exist, create it with empty array
-    await fs.writeFile(LEADS_FILE, JSON.stringify([], null, 2), "utf-8");
-  }
+// Map database column names (snake_case) to application types (camelCase)
+function mapFromDb(dbLead: any): Lead {
+  return {
+    id: dbLead.id,
+    name: dbLead.name,
+    phone: dbLead.phone,
+    studentClass: dbLead.student_class,
+    syllabus: dbLead.syllabus,
+    createdAt: dbLead.created_at,
+    status: dbLead.status,
+    notes: dbLead.notes || "",
+  };
 }
 
 export async function getLeads(): Promise<Lead[]> {
-  await ensureDb();
+  if (!SUPABASE_URL || !SUPABASE_KEY) {
+    console.warn("Warning: Supabase credentials missing. Returning empty leads.");
+    return [];
+  }
+
   try {
-    const data = await fs.readFile(LEADS_FILE, "utf-8");
-    return JSON.parse(data) as Lead[];
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/leads?select=*`, {
+      method: "GET",
+      headers: getHeaders(),
+      next: { revalidate: 0 }, // Bypass Next.js cache
+    } as any);
+
+    if (!res.ok) {
+      throw new Error(`Supabase read error: ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    return data.map(mapFromDb);
   } catch (error) {
-    console.error("Error reading leads file:", error);
+    console.error("Error reading leads from Supabase:", error);
     return [];
   }
 }
 
 export async function addLead(leadData: Omit<Lead, "id" | "createdAt" | "status">): Promise<Lead> {
-  await ensureDb();
-  const leads = await getLeads();
+  if (!SUPABASE_URL || !SUPABASE_KEY) {
+    throw new Error("Supabase credentials missing.");
+  }
 
-  const newLead: Lead = {
-    ...leadData,
+  const payload = {
     id: `lead_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`,
-    createdAt: new Date().toISOString(),
+    name: leadData.name,
+    phone: leadData.phone,
+    student_class: leadData.studentClass,
+    syllabus: leadData.syllabus,
     status: "pending",
     notes: "",
   };
 
-  leads.push(newLead);
-  await fs.writeFile(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
-  return newLead;
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+      method: "POST",
+      headers: {
+        ...getHeaders(),
+        "Prefer": "return=representation",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      const errBody = await res.text();
+      throw new Error(`Supabase insert error: ${res.statusText} - ${errBody}`);
+    }
+
+    const data = await res.json();
+    return mapFromDb(data[0]);
+  } catch (error) {
+    console.error("Error adding lead to Supabase:", error);
+    throw error;
+  }
 }
 
 export async function updateLead(
   id: string,
   updates: Partial<Pick<Lead, "status" | "notes">>
 ): Promise<Lead | null> {
-  await ensureDb();
-  const leads = await getLeads();
-  const index = leads.findIndex((l) => l.id === id);
+  if (!SUPABASE_URL || !SUPABASE_KEY) {
+    throw new Error("Supabase credentials missing.");
+  }
 
-  if (index === -1) return null;
+  const payload: any = {};
+  if (updates.status) payload.status = updates.status;
+  if (updates.notes !== undefined) payload.notes = updates.notes;
 
-  leads[index] = {
-    ...leads[index],
-    ...updates,
-  };
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/leads?id=eq.${id}`, {
+      method: "PATCH",
+      headers: {
+        ...getHeaders(),
+        "Prefer": "return=representation",
+      },
+      body: JSON.stringify(payload),
+    });
 
-  await fs.writeFile(LEADS_FILE, JSON.stringify(leads, null, 2), "utf-8");
-  return leads[index];
+    if (!res.ok) {
+      throw new Error(`Supabase update error: ${res.statusText}`);
+    }
+
+    const data = await res.json();
+    if (data.length === 0) return null;
+    return mapFromDb(data[0]);
+  } catch (error) {
+    console.error("Error updating lead in Supabase:", error);
+    throw error;
+  }
 }
 
 export async function deleteLead(id: string): Promise<boolean> {
-  await ensureDb();
-  const leads = await getLeads();
-  const initialLength = leads.length;
-  const filtered = leads.filter((l) => l.id !== id);
+  if (!SUPABASE_URL || !SUPABASE_KEY) {
+    throw new Error("Supabase credentials missing.");
+  }
 
-  if (filtered.length === initialLength) return false;
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/leads?id=eq.${id}`, {
+      method: "DELETE",
+      headers: getHeaders(),
+    });
 
-  await fs.writeFile(LEADS_FILE, JSON.stringify(filtered, null, 2), "utf-8");
-  return true;
+    if (!res.ok) {
+      throw new Error(`Supabase delete error: ${res.statusText}`);
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Error deleting lead from Supabase:", error);
+    return false;
+  }
 }
