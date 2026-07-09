@@ -8,9 +8,9 @@ export default function Footer() {
   return (
     <footer className="bg-[#05070B] border-t border-white/5 noise-bg">
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
           {/* Brand */}
-          <div className="md:col-span-2 space-y-6">
+          <div className="sm:col-span-2 lg:col-span-2 space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-emerald-brand to-teal-accent rounded-xl flex items-center justify-center shadow-lg shadow-emerald-brand/10">
                 <span className="text-white font-clash font-bold text-xl">A</span>

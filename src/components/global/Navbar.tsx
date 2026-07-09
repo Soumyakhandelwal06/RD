@@ -76,7 +76,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -105,7 +105,7 @@ export default function Navbar() {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[9100] rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+            className="lg:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[9100] rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
@@ -136,7 +136,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[8999] md:hidden"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[8999] lg:hidden"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
@@ -144,7 +144,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 220 }}
-              className="fixed top-0 right-0 bottom-0 w-80 bg-navy/95 backdrop-blur-2xl border-l border-white/5 z-[9050] md:hidden flex flex-col pt-28 px-10"
+              className="fixed top-0 right-0 bottom-0 w-80 bg-navy/95 backdrop-blur-2xl border-l border-white/5 z-[9050] lg:hidden flex flex-col pt-28 px-10"
             >
               <div className="flex flex-col gap-2">
                 {NAV_LINKS.map((link, i) => (
