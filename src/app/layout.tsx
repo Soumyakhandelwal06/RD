@@ -9,26 +9,28 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ascend Academy — Engineering Tomorrow's Winners | Premier Coaching Centre",
+  title: "RD Classes — Bank, SSC & Railway Exam Coaching in Ajmer",
   description:
-    "Kerala's premium coaching centre for State Syllabus, CBSE & Entrance Exams (NEET/KEAM/JEE). 1330+ A+ students, 98% result rate, 15+ years of excellence. Book a free demo class today.",
+    "Ajmer's trusted coaching institute for Bank (SBI PO, IBPS), SSC (CGL, CHSL, MTS, GD, JE), and Railway (NTPC, Group D, ALP, RPF) exams. Expert faculty, structured courses, regular mock tests. Book a free demo class today.",
   keywords: [
-    "coaching centre Kerala",
-    "NEET coaching",
-    "KEAM coaching",
-    "CBSE tuition",
-    "State syllabus coaching",
-    "Kochi coaching centre",
-    "best coaching institute Kerala",
+    "RD Classes Ajmer",
+    "SSC coaching Ajmer",
+    "Bank exam coaching Ajmer",
+    "Railway exam coaching Ajmer",
+    "IBPS coaching",
+    "SBI PO coaching",
+    "SSC CGL coaching",
+    "government job coaching Ajmer",
+    "Adda247 associate partner",
   ],
-  authors: [{ name: "Ascend Academy" }],
+  authors: [{ name: "RD Classes" }],
   openGraph: {
-    title: "Ascend Academy — Engineering Tomorrow's Winners",
+    title: "RD Classes — Bank, SSC & Railway Exam Coaching in Ajmer",
     description:
-      "Kerala's premium coaching centre. 1330+ A+ students, 98% result rate. NEET, KEAM, JEE, CBSE & State Board.",
+      "Ajmer's trusted coaching for Bank, SSC & Railway exams. Expert faculty led by Rakesh Sir. Structured courses, mock tests & doubt-clearing sessions.",
     type: "website",
     locale: "en_IN",
-    siteName: "Ascend Academy",
+    siteName: "RD Classes",
   },
   robots: {
     index: true,
@@ -61,17 +63,19 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "EducationalOrganization",
-              name: "Ascend Academy",
+              name: "RD Classes",
               description:
-                "Kerala's premium coaching centre for State Syllabus, CBSE & Entrance Exams",
+                "Ajmer's trusted coaching institute for Bank, SSC & Railway government exams",
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Kochi",
-                addressRegion: "Kerala",
+                streetAddress: "Shanti Pura, Vaishali Road, Opposite Mansingh Hotel, LIC Colony",
+                addressLocality: "Ajmer",
+                addressRegion: "Rajasthan",
+                postalCode: "305001",
                 addressCountry: "IN",
               },
-              telephone: "+91 94627 83629",
-              email: "info@ascendacademy.in",
+              telephone: "+91 8005678034",
+              email: "info@rdclasses.in",
               sameAs: [],
             }),
           }}
