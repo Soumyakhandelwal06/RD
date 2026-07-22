@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import CountUp from "react-countup";
 import { STATS } from "@/lib/constants";
 
 const StatIcon = ({ icon }: { icon: string }) => {
@@ -63,15 +62,9 @@ export default function StatsBar() {
               <div className="flex justify-center">
                 <StatIcon icon={stat.icon} />
               </div>
-              <div className="text-white font-clash font-bold text-4xl md:text-5xl mb-2.5">
-                {isInView ? (
-                  <CountUp end={stat.number} duration={2.5} delay={i * 0.2} separator="," />
-                ) : (
-                  "0"
-                )}
-                <span className="text-gold-brand text-glow-orange">{stat.suffix}</span>
-              </div>
-              <p className="text-white/45 text-xs font-bold uppercase tracking-widest">{stat.label}</p>
+              <p className="text-white font-clash font-bold text-xl md:text-2xl mb-2.5 leading-snug tracking-wide">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>

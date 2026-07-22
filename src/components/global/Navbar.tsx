@@ -63,7 +63,7 @@ export default function Navbar() {
             className="logo-pulse flex items-center gap-3 group"
           >
             <div className="w-10 h-10 bg-gradient-to-br from-emerald-brand to-teal-accent rounded-xl flex items-center justify-center shadow-lg shadow-emerald-brand/20 transition-transform duration-300 group-hover:scale-105">
-              <span className="text-white font-clash font-bold text-xl">A</span>
+              <span className="text-white font-clash font-bold text-xl">R</span>
             </div>
             <div>
               <span className="text-white font-clash font-bold text-lg leading-none block tracking-wide group-hover:text-emerald-light transition-colors">

@@ -50,7 +50,7 @@ export default function Courses() {
             Choose Your <span className="text-gold-brand">Path</span>
           </h2>
           <p className="text-navy/50 text-lg max-w-2xl mx-auto leading-relaxed">
-            Tailored coaching programs for every academic goal — from board exams to competitive entrances.
+            Expert coaching for every competitive goal — from Banking and SSC to Railway exams.
           </p>
         </motion.div>
 

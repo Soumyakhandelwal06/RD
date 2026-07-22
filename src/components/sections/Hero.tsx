@@ -14,13 +14,14 @@ const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
   ),
 });
 
-const headlineWords = ["Engineering", "Tomorrow's", "Winners"];
-const subtext = "Kerala's premier coaching centre transforming students into achievers through innovative teaching, proven systems, and unwavering dedication.";
+const headlineWords = ["Ajmer's", "Trusted", "Coaching"];
+const subtext = "RD Classes Ajmer helps government job aspirants crack SSC, Banking, and Railway exams with expert faculty, structured courses, and result-oriented preparation.";
 
-const statCards = [
-  { number: "1330+", label: "A+ Students" },
-  { number: "15+", label: "Years" },
-  { number: "98%", label: "Result Rate" },
+const statBadges = [
+  { label: "Expert Faculty" },
+  { label: "Structured Courses" },
+  { label: "Regular Mock Tests" },
+  { label: "Adda247 Associate Partner" },
 ];
 
 export default function Hero() {
@@ -234,26 +235,24 @@ export default function Hero() {
             </button>
           </motion.div>
 
-          {/* Floating Stat Cards */}
+          {/* Stat Badge Cards — honest non-numeric badges */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={loaded ? { opacity: 1 } : {}}
             transition={{ delay: 3.6, duration: 0.8 }}
             className="flex flex-wrap gap-4 pt-6"
           >
-            {statCards.map((stat, i) => (
+            {statBadges.map((badge, i) => (
               <motion.div
-                key={stat.label}
+                key={badge.label}
                 initial={{ opacity: 0, y: 30 }}
                 animate={loaded ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 1.7 + i * 0.15 }}
-                className="stat-card bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4 flex items-center gap-4 shadow-premium-md hover:border-white/20 transition-colors"
+                className="stat-card bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl px-5 py-3 flex items-center gap-3 shadow-premium-md hover:border-white/20 transition-colors"
               >
-                <span className="text-gold-brand font-clash font-bold text-3xl text-glow-orange">
-                  {stat.number}
-                </span>
-                <span className="text-white/50 text-xs font-semibold uppercase tracking-wider">
-                  {stat.label}
+                <div className="w-2 h-2 bg-gold-brand rounded-full text-glow-orange flex-shrink-0" />
+                <span className="text-white/80 text-xs font-semibold uppercase tracking-wider">
+                  {badge.label}
                 </span>
               </motion.div>
             ))}

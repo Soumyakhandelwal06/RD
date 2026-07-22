@@ -1,11 +1,11 @@
 // Brand Identity
 export const BRAND = {
-  name: "Ascend Academy",
-  tagline: "Engineering Tomorrow's Winners",
-  phone: "+91 94627 83629",
-  email: "info@ascendacademy.in",
-  address: "Kochi, Kerala, India",
-  whatsapp: "919462783629",
+  name: "RD Classes",
+  tagline: "Your Path to Government Job Success",
+  phone: "+91 8005678034",
+  email: "info@rdclasses.in",
+  address: "Shanti Pura, Vaishali Road, Opposite Mansingh Hotel, LIC Colony, Ajmer – 305001",
+  whatsapp: "918005678034",
 };
 
 export const COLORS = {
@@ -17,12 +17,13 @@ export const COLORS = {
   tealAccent: "#14B8A6",
 };
 
-// Stats Data
+// Stats Data — replaced with non-numeric honest badges
+// Rendered as badge cards instead of CountUp numbers (see StatsBar component)
 export const STATS = [
-  { number: 1330, suffix: "+", label: "A+ Students", icon: "graduation" },
-  { number: 15, suffix: "+", label: "Years of Excellence", icon: "calendar" },
-  { number: 98, suffix: "%", label: "Result Rate", icon: "chart" },
-  { number: 50, suffix: "+", label: "Expert Teachers", icon: "users" },
+  { number: 0, suffix: "", label: "Expert Faculty", icon: "graduation" },
+  { number: 0, suffix: "", label: "Structured Courses", icon: "calendar" },
+  { number: 0, suffix: "", label: "Regular Mock Tests", icon: "chart" },
+  { number: 0, suffix: "", label: "Adda247 Associate Partner", icon: "users" },
 ];
 
 // Features for Why Choose Us
@@ -33,48 +34,48 @@ export const FEATURES = [
     icon: "live",
   },
   {
-    title: "5× Revision System",
-    description: "Our proprietary five-round revision methodology ensures permanent retention and deep understanding.",
+    title: "Structured Mock Test Series",
+    description: "Regular full-length mock tests designed to match exam patterns for SSC, Banking, and Railway exams.",
     icon: "revision",
   },
   {
-    title: "Daily Examinations",
-    description: "Stay sharp with daily assessments that track progress and identify areas for improvement instantly.",
+    title: "Regular Performance Tests",
+    description: "Frequent assessments to track your progress and pinpoint areas that need improvement before the exam.",
     icon: "exam",
   },
   {
-    title: "Visual Learning (3D Videos)",
-    description: "Complex concepts made simple through cutting-edge 3D animated video lessons.",
+    title: "Concept-Based Learning",
+    description: "Focus on deep conceptual understanding so you can tackle any question variation with confidence.",
     icon: "visual",
   },
   {
     title: "Monthly Progress Reports",
-    description: "Comprehensive analytics on student performance delivered to parents every month.",
+    description: "Comprehensive analytics on student performance delivered every month so you always know where you stand.",
     icon: "report",
   },
   {
     title: "Previous Year Papers",
-    description: "Extensive bank of solved previous year papers with detailed explanations and shortcuts.",
+    description: "Extensive bank of solved previous year papers with detailed explanations and exam-specific shortcuts.",
     icon: "papers",
   },
   {
-    title: "Mind Power (Yoga)",
-    description: "Unique yoga and meditation sessions to boost concentration, memory, and mental clarity.",
+    title: "Personal Doubt-Clearing Sessions",
+    description: "One-on-one doubt sessions with faculty to ensure no concept is left unclear before exam day.",
     icon: "yoga",
   },
   {
     title: "Study Material",
-    description: "Premium, curated study materials designed by top educators aligned with latest syllabi.",
+    description: "Premium, curated study materials designed by experienced educators aligned with the latest exam syllabi.",
     icon: "material",
   },
   {
-    title: "Parent Communication",
-    description: "Regular parent-teacher interactions and dedicated WhatsApp groups for seamless updates.",
+    title: "Direct Faculty Guidance",
+    description: "Get direct guidance from experienced faculty who understand government exam patterns inside and out.",
     icon: "parent",
   },
   {
     title: "Model Examinations",
-    description: "Full-length model exams simulating real board and entrance exam conditions.",
+    description: "Full-length model exams simulating real SSC, Banking, and Railway exam conditions for maximum readiness.",
     icon: "model",
   },
 ];
@@ -83,41 +84,41 @@ export const FEATURES = [
 export const COURSES = [
   {
     id: "state",
-    name: "State Syllabus",
-    subtitle: "Kerala State Board",
+    name: "Bank Exams",
+    subtitle: "SBI, IBPS PO / Clerk / RRB",
     features: [
-      "Classes 8–12 Coverage",
-      "Kerala SSLC & Plus Two Focus",
-      "Malayalam & English Medium",
-      "State Board Exam Toppers",
-      "Previous Year Analysis",
+      "SBI PO & SBI Clerk",
+      "IBPS PO & IBPS Clerk",
+      "IBPS RRB Officer & Assistant",
+      "Quantitative Aptitude & Reasoning",
+      "English & General Awareness",
     ],
     color: "#047857",
   },
   {
     id: "cbse",
-    name: "CBSE",
-    subtitle: "Central Board Excellence",
+    name: "SSC Exams",
+    subtitle: "CGL, CHSL, MTS, GD, JE",
     features: [
-      "Classes 8–12 CBSE Curriculum",
-      "NCERT + Reference Materials",
-      "Board Exam Preparation",
-      "English Medium Instruction",
-      "Regular Mock Tests",
+      "SSC CGL & SSC CHSL",
+      "SSC MTS & SSC GD",
+      "SSC JE (Junior Engineer)",
+      "General Studies & Reasoning",
+      "Mock Test Series Included",
     ],
     color: "#d4af37",
     featured: true,
   },
   {
     id: "entrance",
-    name: "Entrance",
-    subtitle: "NEET / KEAM / JEE",
+    name: "Railway Exams",
+    subtitle: "NTPC, Group D, ALP, RPF, Technician",
     features: [
-      "Medical & Engineering Entrance",
-      "NEET Biology + Chemistry + Physics",
-      "KEAM Mathematics + Physics",
-      "Intensive Crash Courses",
-      "All-India Mock Tests",
+      "Railway NTPC & Group D",
+      "Railway ALP & Technician",
+      "RPF Constable & SI",
+      "Mathematics & General Science",
+      "Previous Year Paper Practice",
     ],
     color: "#047857",
   },
@@ -129,92 +130,77 @@ export const PHILOSOPHY_PANELS = [
     title: "Industry Leaders",
     subtitle: "Built by Excellence",
     description:
-      "Our faculty comprises IIT alumni, medical professionals, and educators with 15+ years of experience. We don't just teach — we mentor the next generation of achievers with real-world expertise and academic mastery.",
+      "Our faculty is led by Rakesh Sir, with experienced educators dedicated to helping students crack government exams through concept-based learning and structured guidance.",
   },
   {
     title: "Hybrid Learning",
     subtitle: "Best of Both Worlds",
     description:
-      "Combining the warmth of classroom interactions with the power of digital tools. Our hybrid model ensures that every student — whether in-person or remote — receives the same world-class education without compromise.",
+      "Combining the warmth of classroom interactions with the power of digital tools. Our hybrid model ensures that every aspirant — whether in-person or remote — receives the same top-quality government exam preparation without compromise.",
   },
   {
     title: "Teaching from Heart",
     subtitle: "Driven by Heart",
     description:
-      "Education isn't a transaction — it's a transformation. Every teacher at Ascend Academy is here because they believe in the power of nurturing young minds. Your child isn't just a student to us; they're family.",
+      "Education isn't a transaction — it's a transformation. Every teacher at RD Classes is here because they believe in the power of nurturing aspirants. Your success in a government exam isn't just a goal to us; it's our mission.",
   },
 ];
 
 // Testimonials
+// [SAMPLE TESTIMONIAL] — Not real. For placeholder/demo purposes only.
 export const TESTIMONIALS = [
   {
     quote:
-      "My daughter scored 98% in her board exams after joining Ascend Academy. The teachers here don't just teach — they transform lives. The personal attention each student receives is remarkable.",
-    name: "Priya Menon",
-    role: "Parent of Ananya (Class 12, CBSE)",
-    rating: 5,
-    hasVideo: true,
-  },
-  {
-    quote:
-      "I cracked NEET on my first attempt with an AIR of 342. The revision system and daily tests at Ascend Academy made all the difference. I couldn't have done it without them.",
-    name: "Arjun K.",
-    role: "NEET 2024 Qualifier",
+      "RD Classes Ajmer helped me build the concept clarity I needed for SSC CGL. The mock tests really improved my speed and accuracy.",
+    name: "Sample Student",
+    role: "SSC CGL Aspirant — [SAMPLE TESTIMONIAL]",
     rating: 5,
     hasVideo: false,
   },
   {
     quote:
-      "What sets Ascend apart is their holistic approach. The yoga sessions helped my son manage exam stress, and his grades improved dramatically. A+ in all subjects!",
-    name: "Rajesh Nair",
-    role: "Parent of Aditya (Class 10, State)",
-    rating: 5,
-    hasVideo: true,
-  },
-  {
-    quote:
-      "The 3D video lessons made Physics and Chemistry so easy to understand. Complex concepts became visual stories. I went from average to topper in just 6 months.",
-    name: "Meera S.",
-    role: "Class 12 State Board Topper",
+      "The structured course plan at RD Classes made it easy to cover the entire IBPS PO syllabus systematically. Rakesh Sir's guidance was invaluable.",
+    name: "Sample Student",
+    role: "IBPS PO Aspirant — [SAMPLE TESTIMONIAL]",
     rating: 5,
     hasVideo: false,
   },
   {
     quote:
-      "As a parent, the monthly progress reports give me complete visibility into my child's academic journey. The teachers are always accessible and genuinely caring.",
-    name: "Dr. Suresh Kumar",
-    role: "Parent of Kavya (Class 11, CBSE)",
+      "I cleared Railway NTPC after joining RD Classes. The previous year paper practice and regular mock tests gave me the confidence I needed on exam day.",
+    name: "Sample Student",
+    role: "Railway NTPC Aspirant — [SAMPLE TESTIMONIAL]",
     rating: 5,
-    hasVideo: true,
+    hasVideo: false,
   },
 ];
 
 // FAQ
 export const FAQ_ITEMS = [
   {
-    question: "What courses are offered at Ascend Academy?",
+    question: "Do you provide coaching for multiple exams?",
     answer:
-      "We offer comprehensive coaching for State Syllabus (Kerala SSLC & Plus Two), CBSE (Classes 8–12), and Entrance Examinations (NEET, KEAM, JEE). Each program is tailored with specialized faculty and study materials.",
+      "Yes! RD Classes provides expert coaching for Bank Exams (SBI PO, IBPS Clerk, IBPS PO, IBPS RRB, SBI Clerk), SSC Exams (CGL, CHSL, MTS, GD, JE), and Railway Exams (NTPC, Group D, ALP, RPF, Technician). Each program has dedicated faculty and study material.",
   },
   {
-    question: "Do you offer online classes or only offline?",
+    question: "Do you offer online and offline classes?",
     answer:
-      "We operate on a hybrid model — students can attend live interactive classes both in-person at our Kochi centre and online from anywhere. Our digital platform provides recorded sessions, study materials, and real-time doubt clearing.",
+      "We offer both online and offline batches. Students can attend classes in person at our Ajmer centre (Shanti Pura, Vaishali Road) or join live online sessions from anywhere. Recorded lectures and study materials are accessible digitally.",
   },
   {
-    question: "Can my child attend a free demo class?",
+    question: "Is there a free demo class available?",
     answer:
-      "Absolutely! We offer complimentary demo classes for all our programs. Book a free demo through our website or call us directly. Experience our teaching methodology firsthand before making any commitment.",
+      "Absolutely! We offer a complimentary demo class for all our programs. Book your free demo through our website or call us at +91 8005678034. Experience our teaching methodology firsthand with no commitment required.",
   },
   {
-    question: "What kind of academic support do students receive?",
+    question: "What is the fee structure?",
     answer:
-      "Students receive 5× revision cycles, daily examinations, monthly progress reports, previous year paper analysis, premium study materials, mind-power yoga sessions, and regular parent-teacher communication. We leave no stone unturned.",
+      "Fee structure varies by program and batch duration. Please contact us directly at +91 8005678034 or visit our centre for the latest fee details and available batch timings. We offer flexible payment options.",
   },
   {
-    question: "Who can join Ascend Academy?",
+    question: "Do you provide study material and mock tests?",
     answer:
-      "Students from Class 8 to Class 12 (State, CBSE) and those preparing for entrance examinations (NEET, KEAM, JEE) are welcome. We conduct a preliminary assessment to customize the learning path for each student.",
+      "Yes. All enrolled students receive comprehensive study material curated for their specific exam, access to a structured mock test series, and previous year paper practice sets — all included as part of the course.",
   },
 ];
 

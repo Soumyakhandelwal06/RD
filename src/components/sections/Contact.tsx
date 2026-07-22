@@ -11,8 +11,8 @@ export default function Contact() {
   const [confetti, setConfetti] = useState<Array<{ id: number; x: number; color: string; delay: number }>>([]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [studentClass, setStudentClass] = useState("");
-  const [syllabus, setSyllabus] = useState("");
+  const [examCategory, setExamCategory] = useState("");
+  const [batchTiming, setBatchTiming] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -40,8 +40,8 @@ export default function Contact() {
         body: JSON.stringify({
           name,
           phone,
-          studentClass,
-          syllabus,
+          studentClass: examCategory,
+          syllabus: batchTiming,
         }),
       });
 
@@ -55,8 +55,8 @@ export default function Contact() {
       launchConfetti();
       setName("");
       setPhone("");
-      setStudentClass("");
-      setSyllabus("");
+      setExamCategory("");
+      setBatchTiming("");
     } catch (err: any) {
       setError(err.message || "An unexpected error occurred. Please try again.");
     } finally {
@@ -147,7 +147,7 @@ export default function Contact() {
               </span>
             </h2>
             <p className="text-navy/55 text-lg leading-relaxed max-w-md">
-              Take the first step towards academic excellence. Book a free demo class and experience the Ascend difference.
+              Take the first step towards your government job dream. Book a free demo class and experience the RD Classes difference.
             </p>
 
             {/* Contact info */}
@@ -251,27 +251,24 @@ export default function Contact() {
                   </label>
                 </div>
 
-                {/* Class Dropdown */}
+                {/* Exam Category Dropdown */}
                 <div className="relative">
                   <select
                     required
-                    value={studentClass}
-                    onChange={(e) => setStudentClass(e.target.value)}
+                    value={examCategory}
+                    onChange={(e) => setExamCategory(e.target.value)}
                     className="form-input w-full bg-white/45 border border-navy/10 rounded-2xl px-5 pt-6.5 pb-2.5 text-navy font-semibold outline-none focus:bg-white focus:border-emerald-brand/40 transition-all duration-300 appearance-none shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)]"
-                    id="student-class"
+                    id="exam-category"
                   >
                     <option value="" disabled>
-                      Select Class
+                      Select Exam Category
                     </option>
-                    {[8, 9, 10, 11, 12].map((c) => (
-                      <option key={c} value={c}>
-                        Class {c}
-                      </option>
-                    ))}
-                    <option value="entrance">Entrance Prep</option>
+                    <option value="bank">Bank Exams (SBI / IBPS)</option>
+                    <option value="ssc">SSC Exams (CGL / CHSL / MTS / GD / JE)</option>
+                    <option value="railway">Railway Exams (NTPC / Group D / ALP / RPF)</option>
                   </select>
-                  <label htmlFor="student-class" className="floating-label" style={{ top: "8px", transform: "none", fontSize: "11px", color: "var(--color-emerald-brand)", fontWeight: 600 }}>
-                    Class
+                  <label htmlFor="exam-category" className="floating-label" style={{ top: "8px", transform: "none", fontSize: "11px", color: "var(--color-emerald-brand)", fontWeight: 600 }}>
+                    Exam Category
                   </label>
                   <div className="absolute right-5 top-[55%] -translate-y-1/2 pointer-events-none">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2.5">
@@ -280,24 +277,23 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Syllabus Dropdown */}
+                {/* Preferred Batch Timing Dropdown */}
                 <div className="relative">
                   <select
                     required
-                    value={syllabus}
-                    onChange={(e) => setSyllabus(e.target.value)}
+                    value={batchTiming}
+                    onChange={(e) => setBatchTiming(e.target.value)}
                     className="form-input w-full bg-white/45 border border-navy/10 rounded-2xl px-5 pt-6.5 pb-2.5 text-navy font-semibold outline-none focus:bg-white focus:border-emerald-brand/40 transition-all duration-300 appearance-none shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)]"
-                    id="syllabus"
+                    id="batch-timing"
                   >
                     <option value="" disabled>
-                      Select Syllabus
+                      Select Batch Timing
                     </option>
-                    <option value="state">State Syllabus</option>
-                    <option value="cbse">CBSE</option>
-                    <option value="entrance">Entrance (NEET/KEAM)</option>
+                    <option value="morning">Morning Batch</option>
+                    <option value="evening">Evening Batch</option>
                   </select>
-                  <label htmlFor="syllabus" className="floating-label" style={{ top: "8px", transform: "none", fontSize: "11px", color: "var(--color-emerald-brand)", fontWeight: 600 }}>
-                    Syllabus
+                  <label htmlFor="batch-timing" className="floating-label" style={{ top: "8px", transform: "none", fontSize: "11px", color: "var(--color-emerald-brand)", fontWeight: 600 }}>
+                    Preferred Batch Timing
                   </label>
                   <div className="absolute right-5 top-[55%] -translate-y-1/2 pointer-events-none">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2.5">

@@ -34,7 +34,7 @@ export default function FAQ() {
             Got <span className="text-gold-brand">Questions?</span>
           </h2>
           <p className="text-navy/50 text-lg leading-relaxed">
-            Everything you need to know about Ascend Academy.
+            Everything you need to know about RD Classes.
           </p>
         </motion.div>
 

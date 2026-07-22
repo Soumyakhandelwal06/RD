@@ -95,13 +95,13 @@ export default function WhyChooseUs() {
                 Why Choose Us
               </span>
               <h2 className="font-clash font-bold text-4xl md:text-5xl text-navy leading-tight tracking-tight">
-                The Ascend <br />
+                The RD Classes <br />
                 <span className="text-emerald-brand">Advantage</span>
               </h2>
               <p className="text-navy/60 text-lg leading-relaxed pt-2">
-                We don&apos;t just prepare students for exams — we build
-                confident, curious, and capable individuals ready to take on
-                the world.
+                We don&apos;t just prepare aspirants for exams — we build
+                confident, well-prepared individuals ready to secure a
+                government job.
               </p>
               <div className="w-16 h-1 bg-gradient-to-r from-gold-brand to-gold-dark rounded-full mt-8" />
             </motion.div>

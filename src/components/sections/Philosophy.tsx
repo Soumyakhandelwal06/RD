@@ -129,7 +129,7 @@ export default function Philosophy() {
               {quote}
             </h2>
             <div className="mt-8 text-white/40 text-xs font-bold tracking-widest uppercase">
-              — The Ascend Academy Promise
+              — The RD Classes Promise
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-2 space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-br from-emerald-brand to-teal-accent rounded-xl flex items-center justify-center shadow-lg shadow-emerald-brand/10">
-                <span className="text-white font-clash font-bold text-xl">A</span>
+                <span className="text-white font-clash font-bold text-xl">R</span>
               </div>
               <div>
                 <span className="text-white font-clash font-bold text-lg block tracking-wide">
@@ -25,8 +25,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/40 text-sm leading-relaxed max-w-sm mt-4">
-              Transforming students into achievers since 2009. Kerala&apos;s premier coaching centre for
-              State Board, CBSE, and Entrance Examinations.
+              Ajmer&apos;s trusted coaching institute for Bank, SSC, and Railway exam aspirants. Expert faculty, structured courses, and result-oriented preparation — all under one roof.
             </p>
           </div>
 
